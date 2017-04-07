@@ -140,7 +140,7 @@ var MRT = {
             fromDirection = previousStation.stationFlow[fromLine.name]["previous"]
         }
 
-        if (!isTrainFacingOppOnFromLine){
+        if (!isTrainFacingOppOnToLine){
             toDirection = interchange.stationFlow[toLine.name]["next"]
         }
         else{
