@@ -12277,11 +12277,11 @@ var App = function (_React$Component) {
 
             // Choosing start station stage.
             if (this.state.stage === 0) {
-                this.setState({ startStationId: stationId });
+                this.setState({ startStationId: stationId }, this.goToNextStage);
             }
             // Choosing end station stage.
             else if (this.state.stage === 1) {
-                    this.setState({ endStationId: stationId });
+                    this.setState({ endStationId: stationId }, this.goToNextStage);
                 }
         }
     }, {
@@ -12377,15 +12377,6 @@ var App = function (_React$Component) {
                             'div',
                             { className: 'twelve columns' },
                             _react2.default.createElement(_map2.default, { stations: this.state.stations, lines: this.state.lines, onClickHandler: this.onStationButtonClickHandler, startStationId: this.state.startStationId, endStationId: this.state.endStationId })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'centered row' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'wrapped columns' },
-                            _react2.default.createElement(_guide.ButtonGuide, { currentStage: this.state.stage, messages: ["next", "next", " ", " "], visibleAtStage: [0, 1], onClickHandler: this.goToNextStage })
                         )
                     ),
                     _react2.default.createElement(
