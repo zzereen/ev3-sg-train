@@ -7363,6 +7363,38 @@ var MapUtils = {
                                     movementFlow.push(this.getInterchangeTurnDirection(interchange, startStation, endStation, startLine, endLine));
                                     Array.prototype.push.apply(movementFlow, this.generateMovementFlow(interchange, endStation, endLine));
 
+                                    var blacklist = false;
+                                    var _iteratorNormalCompletion12 = true;
+                                    var _didIteratorError12 = false;
+                                    var _iteratorError12 = undefined;
+
+                                    try {
+                                        for (var _iterator12 = stationPath[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                                            var station = _step12.value;
+
+                                            if (station.name === "Woodlands") {
+                                                blacklist = true;
+                                            }
+                                        }
+                                    } catch (err) {
+                                        _didIteratorError12 = true;
+                                        _iteratorError12 = err;
+                                    } finally {
+                                        try {
+                                            if (!_iteratorNormalCompletion12 && _iterator12.return) {
+                                                _iterator12.return();
+                                            }
+                                        } finally {
+                                            if (_didIteratorError12) {
+                                                throw _iteratorError12;
+                                            }
+                                        }
+                                    }
+
+                                    if (blacklist) {
+                                        continue;
+                                    }
+
                                     routes.push(new Route(startStation, endStation, startLine, endLine, interchange, stationPath, movementFlow));
                                 }
                             } catch (err) {
@@ -7381,6 +7413,40 @@ var MapUtils = {
                             }
                         } else {
                             // Direct path available
+                            var _stationPath = this.generateStationPath(startStation, endStation, startLine);
+
+                            var _blacklist = false;
+                            var _iteratorNormalCompletion13 = true;
+                            var _didIteratorError13 = false;
+                            var _iteratorError13 = undefined;
+
+                            try {
+                                for (var _iterator13 = _stationPath[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+                                    var _station = _step13.value;
+
+                                    if (_station.name === "Woodlands") {
+                                        _blacklist = true;
+                                    }
+                                }
+                            } catch (err) {
+                                _didIteratorError13 = true;
+                                _iteratorError13 = err;
+                            } finally {
+                                try {
+                                    if (!_iteratorNormalCompletion13 && _iterator13.return) {
+                                        _iterator13.return();
+                                    }
+                                } finally {
+                                    if (_didIteratorError13) {
+                                        throw _iteratorError13;
+                                    }
+                                }
+                            }
+
+                            if (_blacklist) {
+                                continue;
+                            }
+
                             routes.push(new Route(startStation, endStation, startLine, endLine, null, this.generateStationPath(startStation, endStation, startLine), this.generateMovementFlow(startStation, endStation, startLine)));
                         }
                     }

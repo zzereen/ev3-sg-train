@@ -134,6 +134,10 @@ body{
     background-color: #616161;
 }
 
+#Woodlands .stationButton{
+    display: none;
+}
+
 /* Station Info */
 .station .stationInfo{
     text-align: center;

@@ -178,6 +178,16 @@ const MapUtils = {
                         Array.prototype.push.apply(movementFlow, this.generateMovementFlow(startStation, interchange, startLine));
                         movementFlow.push(this.getInterchangeTurnDirection(interchange, startStation, endStation, startLine, endLine));
                         Array.prototype.push.apply(movementFlow, this.generateMovementFlow(interchange, endStation, endLine));
+                        
+                        let blacklist = false;
+                        for (let station of stationPath){
+                            if (station.name === "Woodlands"){
+                                blacklist = true;
+                            }
+                        }
+                        if (blacklist){
+                            continue;
+                        }
 
                         routes.push(new Route(
                             startStation,
@@ -191,6 +201,18 @@ const MapUtils = {
                     }
                 }
                 else{ // Direct path available
+                    let stationPath = this.generateStationPath(startStation, endStation, startLine);
+
+                    let blacklist = false;
+                    for (let station of stationPath){
+                        if (station.name === "Woodlands"){
+                            blacklist = true;
+                        }
+                    }
+                    if (blacklist){
+                        continue;
+                    }
+
                     routes.push(new Route(
                         startStation,
                         endStation,
