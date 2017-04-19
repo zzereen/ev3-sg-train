@@ -1,7 +1,5 @@
 # Infinite 2017
 
-## ***This project is discontinued.***
-
 This project uses the EV3 brick, motors and color sensors to move along the lines of Singapore's MRT railway system.
 
 This project features 3 railway lines known as the East West Line (EWL), North South Line (NSL) and Circle Line (CCL). They are also known as green line, red line and yellow line respectively.
